@@ -1,0 +1,44 @@
+
+{% extends 'layout.html' %}
+
+{% block title %} Diseño PMI {% endblock  %}
+
+{% block content %} 
+<div class="card">
+    <div class="card-header">
+        Lista de Adelantos
+        <a name="" id="" class="btn btn-primary" href="{% url 'pmi:crear-adelanto' %}" role="button"> Agregar una adelanto </a>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Adelantos</h4>
+
+        {% for x in adelantos %}
+        <div class="row">
+            <div class="col-xs-1-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-transform: capitalize; font-weight:bold"> {{x.titulo}} </h3>
+                            <div >
+                                <li class="list-group-item list-group-item-action disabled" style="font-style: italic">{{x.tarea}}</li></br>
+                                <li class="list-group-item list-group-item-action disabled">{{x.descripcion}}</li></br>
+                                <li class="list-group-item list-group-item-action disabled">Participantes:
+                                    <span class="badge bg-secondary" style="font-weight:500">{{x.estudiantes.all|join:', '}}</span></li>
+                                <li class="list-group-item list-group-item-action disabled">Tiempo tomado: 
+                                    <span style="font-style: italic">{{x.tiempo}} horas</span></li>
+                                <li class="list-group-item list-group-item-action disabled" 
+                                    style="font-style:italic; font-size:medium"> Hace {{x.fecha|timesince}}</li>
+                                    <a name="" id="" class="btn btn-outline-primary btn-sm" 
+                                    href="{% url 'pmi:editar-adelanto' x.id %}" 
+                                    role="button"
+                                    style="font-size: 16px">editar</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% include "pagination.html" with page=adelantos %}
+{% endblock  %}

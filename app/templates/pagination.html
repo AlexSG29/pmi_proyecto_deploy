@@ -1,0 +1,29 @@
+{% load static %}
+<html lang="es">
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <link href="{% static "css/pagination.css" %}" rel="stylesheet">
+    </head>
+    <div class="pagination">
+        <span class="step-links">
+        {% if page.has_previous %}
+            {% comment %} <a href="?page={{ page.previous_page_number }}">Anterior</a> {% endcomment %}
+            <span class="material-symbols-outlined">
+                <a href="?page={{ page.previous_page_number }}">arrow_back_ios</a>
+            </span>
+        {% endif %}
+        <span class="current">
+            {{ page.number }} de {{ page.paginator.num_pages }}.
+        </span>
+        {% if page.has_next %}
+            {% comment %} <a href="?page={{ page.next_page_number }}">Siguiente</a> {% endcomment %}
+            <span class="material-symbols-outlined">
+                <a href="?page={{ page.next_page_number }}">arrow_forward_ios</a>
+            </span>
+            
+            
+            
+        {% endif %}
+        </span>
+    </div>
+</html>

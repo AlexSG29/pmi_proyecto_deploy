@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block title %} Crear una Tarea {% endblock  %}
+
+{% block content %}  
+
+<form  method="post"> 
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="" class="form-label">{{formulario.label}}</label>
+        {{ formulario.as_p}}
+      </div>
+      
+    <input name="" id="" class="btn btn-success" type="submit" value="Agregar Tarea">
+    <a name="" id="" class="btn btn-danger" href="{% url 'pmi:tareas' %}" role="button">Cancelar</a>
+        
+</form>
+
+
+{% endblock  %}

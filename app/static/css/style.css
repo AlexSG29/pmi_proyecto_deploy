@@ -1,0 +1,19 @@
+header{
+    font-size: large;
+    font-weight: bold ;
+    padding: 0px;
+
+
+}
+
+body{
+    font-family:'Ubuntu', sans-serif !important;
+    font-size: large !important;
+}
+
+
+.logout{
+    font-size: medium;
+    font-style: italic;
+}
+

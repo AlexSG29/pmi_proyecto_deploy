@@ -1,0 +1,21 @@
+.pagination{
+    margin: 2%;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-weight:bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 200,
+    'wght' 800,
+    'GRAD' 0,
+    'opsz' 48px
+}

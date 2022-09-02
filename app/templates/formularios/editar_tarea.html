@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block title %} Editar una Tarea {% endblock  %}
+
+{% block content %}  
+
+<form  method="post"> 
+    {% csrf_token %}
+    <div>
+        {{ formulario }}
+    </div>
+    
+    <input name="" id="" class="btn btn-success" type="submit" value="Editar Tarea">
+    <a name="" id="" class="btn btn-danger" href="{% url 'pmi:tareas' %}" role="button">Cancelar</a>
+        
+</form>
+
+
+{% endblock  %}

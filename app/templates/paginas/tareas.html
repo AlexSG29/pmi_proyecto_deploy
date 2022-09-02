@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block title %} Diseño PMI {% endblock  %}
+
+{% block content %} 
+<div class="card">
+    <div class="card-header">
+        Lista de Tareas
+        <a name="" id="" class="btn btn-primary" href="{% url 'pmi:crear-tarea' %}" role="button"> Agregar una tarea </a>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">Tareas</h4>
+
+        {% for x in tareas %}
+        <div class="row">
+            <div class="col-xs-1-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-transform: uppercase; font-weight:bold"> {{x.titulo}} </h5>
+                            <div >
+                                <li class="list-group-item list-group-item-action disabled">{{x.descripcion}}</li></br>
+                                <li class="list-group-item list-group-item-action disabled">Inicio: 
+                                    <span style="font-style:italic; font-size:medium">{{x.fecha_inicio}}</span></li>
+                                <li class="list-group-item list-group-item-action disabled">Final:
+                                    <span style="font-style:italic; font-size:medium">{{x.fecha_fin}}</span>
+                                </li>
+                                <li class="list-group-item list-group-item-action disabled">
+                                    {% if x.estado == 'en curso' %}
+                                    <span class="badge rounded-pill bg-primary" style="font-weight:600">{{x.estado}}</span>
+                                    {% else %}
+                                    <span class="badge rounded-pill bg-warning" style="font-weight:600">{{x.estado}}</span>
+                                    {% endif %}
+                                </li>
+                                <li class="list-group-item list-group-item-action disabled">A cargo de:
+                                    <span class="badge bg-secondary" style="font-weight:500">{{x.estudiantes.all|join:', '}}</span></li>
+                                <a name="" id="" class="btn btn-outline-primary btn-sm" 
+                                href="{% url 'pmi:editar-tarea' x.id %}" 
+                                role="button"
+                                style="font-size: 16px">editar</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% include "pagination.html" with page=tareas %}
+{% comment %} <a href="{% url 'pmi:crear-tarea' %}" >Crear nueva tarea</a>
+    <div class='grid'> 
+        {% for x in tareas %}
+            <div class='tareas'> 
+                <ul class='lista'> 
+                    <li> {{ x.titulo }} </li>
+                    <li> {{ x.descripcion}}</li>
+                    <li> {{ x.fecha_inicio }} </li>
+                    <li> {{ x.fecha_fin }} </li>
+                    <li> {{ x.estado }} </li>
+                    <li> {{ x.estudiantes.all|join:', '}} </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </div>
+
+{% include "pagination.html" with page=tareas %} {% endcomment %}
+{% endblock  %}
