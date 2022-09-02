@@ -1,1 +1,1 @@
-web: gunicorn pmi_proyecto_deploy.wsgi --log-file -
+web: gunicorn proyecto.wsgi --log-file -
